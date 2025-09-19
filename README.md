@@ -23,11 +23,13 @@ Flashcards App là một ứng dụng web tiến bộ (PWA) được thiết k�
 - **Tạo thẻ mới**: Thêm câu hỏi và câu trả lời
 - **Chỉnh sửa thẻ**: Cập nhật nội dung thẻ hiện có
 - **Xóa thẻ**: Loại bỏ thẻ không cần thiết
-- **Phân loại**: Tổ chức thẻ theo danh mục (Ngôn ngữ, Khoa học, Lịch sử, v.v.)
+- **Phân loại tiếng Anh**: 13 danh mục chuyên biệt (Từ vựng cơ bản, Hội thoại hàng ngày, Ngữ pháp, v.v.)
 - **Tìm kiếm**: Tìm kiếm thẻ theo nội dung hoặc danh mục
+- **Thẻ mẫu phong phú**: 20+ thẻ tiếng Anh có sẵn để bắt đầu học
 
 ### 📖 Chế độ học tập
 - **Học từng thẻ**: Lật thẻ để xem câu trả lời
+- **Phát âm chuẩn**: Nghe phát âm tiếng Anh với Text-to-Speech
 - **Đánh giá độ khó**: Phân loại thẻ theo mức độ dễ/trung bình/khó
 - **Theo dõi tiến độ**: Thống kê số lần học và lần học cuối
 - **Phím tắt**: Sử dụng phím tắt để học nhanh hơn
