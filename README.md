@@ -1,8 +1,8 @@
 # 📚 Flashcards App - PWA
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=for-the-badge&logo=vercel)](https://flashcards-pb1qekmvm-conanwinners-projects.vercel.app/)
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Available-00C851?style=for-the-badge)](https://flashcards-pb1qekmvm-conanwinners-projects.vercel.app/)
-[![PWA](https://img.shields.io/badge/PWA-Ready-4285F4?style=for-the-badge&logo=pwa)](https://flashcards-pb1qekmvm-conanwinners-projects.vercel.app/)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=for-the-badge&logo=vercel)](https://flashcards-pwa-navy.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Available-00C851?style=for-the-badge)](https://flashcards-pwa-navy.vercel.app/)
+[![PWA](https://img.shields.io/badge/PWA-Ready-4285F4?style=for-the-badge&logo=pwa)](https://flashcards-pwa-navy.vercel.app/)
 
 Ứng dụng học tập thông minh sử dụng thẻ ghi nhớ (flashcards) được xây dựng như một Progressive Web App (PWA).
 
@@ -105,7 +105,7 @@ npx serve .
 ```
 
 ### 2. Truy cập ứng dụng
-- **Live Demo**: [https://flashcards-pb1qekmvm-conanwinners-projects.vercel.app/](https://flashcards-pb1qekmvm-conanwinners-projects.vercel.app/)
+- **Live Demo**: [https://flashcards-pwa-navy.vercel.app/](https://flashcards-pwa-navy.vercel.app/)
 - **Local**: Mở trình duyệt và truy cập `https://localhost:8000`
 - **Deploy**: Có thể deploy lên hosting service như Netlify, Vercel, GitHub Pages
 
@@ -190,7 +190,7 @@ Chỉnh sửa trong `index.html` và `app.js`:
 
 ### 🌐 Live Demo
 **Ứng dụng đã được deploy và có thể truy cập tại:**
-- **Vercel**: [https://flashcards-pb1qekmvm-conanwinners-projects.vercel.app/](https://flashcards-pb1qekmvm-conanwinners-projects.vercel.app/)
+- **Vercel**: [https://flashcards-pwa-navy.vercel.app/](https://flashcards-pwa-navy.vercel.app/)
 - **GitHub Repository**: [https://github.com/conanWinner/flashcards-pwa](https://github.com/conanWinner/flashcards-pwa)
 
 ### GitHub Pages
