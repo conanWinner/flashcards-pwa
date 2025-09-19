@@ -1,0 +1,24 @@
+{
+  "name": "flashcards-pwa",
+  "version": "1.0.0",
+  "description": "Progressive Web App for learning with flashcards",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "serve": "npx serve . -p 8000",
+    "dev": "npx live-server --port=8000 --host=localhost"
+  },
+  "keywords": [
+    "pwa",
+    "flashcards",
+    "education",
+    "learning",
+    "progressive-web-app"
+  ],
+  "author": "Student",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.0.0",
+    "live-server": "^1.2.2"
+  }
+}

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards App - Học tập thông minh</title>
+    <meta name="description" content="Ứng dụng học tập qua thẻ ghi nhớ, hỗ trợ quiz và hoạt động offline">
+    <meta name="theme-color" content="#4f46e5">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16x16.png">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="icon">🎯</span>
+                    Flashcards App
+                </h1>
+                <div class="header-actions">
+                    <button id="addCardBtn" class="btn btn-primary" title="Thêm thẻ mới">
+                        <span class="icon">+</span>
+                        Thêm thẻ
+                    </button>
+                    <button id="quizModeBtn" class="btn btn-secondary" title="Chế độ quiz">
+                        <span class="icon">🎮</span>
+                        Quiz
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Screen -->
+            <div id="welcomeScreen" class="screen active">
+                <div class="welcome-content">
+                    <div class="welcome-icon">📚</div>
+                    <h2>Chào mừng đến với Flashcards App!</h2>
+                    <p>Học tập hiệu quả với thẻ ghi nhớ thông minh</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalCards">0</span>
+                            <span class="stat-label">Thẻ đã tạo</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="studiedToday">0</span>
+                            <span class="stat-label">Đã học hôm nay</span>
+                        </div>
+                    </div>
+                    <button id="startLearningBtn" class="btn btn-primary btn-large">
+                        Bắt đầu học tập
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card List Screen -->
+            <div id="cardListScreen" class="screen">
+                <div class="screen-header">
+                    <h2>Danh sách thẻ</h2>
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Tìm kiếm thẻ...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                </div>
+                <div id="cardList" class="card-list">
+                    <!-- Cards will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Add/Edit Card Screen -->
+            <div id="addCardScreen" class="screen">
+                <div class="screen-header">
+                    <button id="backToListBtn" class="btn btn-back">
+                        <span class="icon">←</span>
+                        Quay lại
+                    </button>
+                    <h2 id="addCardTitle">Thêm thẻ mới</h2>
+                </div>
+                <form id="cardForm" class="card-form">
+                    <div class="form-group">
+                        <label for="cardFront">Mặt trước (Câu hỏi)</label>
+                        <textarea id="cardFront" placeholder="Nhập câu hỏi hoặc từ khóa..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardBack">Mặt sau (Câu trả lời)</label>
+                        <textarea id="cardBack" placeholder="Nhập câu trả lời hoặc định nghĩa..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardCategory">Danh mục</label>
+                        <select id="cardCategory">
+                            <option value="general">Chung</option>
+                            <option value="language">Ngôn ngữ</option>
+                            <option value="science">Khoa học</option>
+                            <option value="history">Lịch sử</option>
+                            <option value="math">Toán học</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="cancelCardBtn" class="btn btn-secondary">Hủy</button>
+                        <button type="submit" class="btn btn-primary">Lưu thẻ</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Study Screen -->
+            <div id="studyScreen" class="screen">
+                <div class="study-header">
+                    <button id="backToWelcomeBtn" class="btn btn-back">
+                        <span class="icon">←</span>
+                        Quay lại
+                    </button>
+                    <div class="study-progress">
+                        <span id="studyProgress">1 / 1</span>
+                    </div>
+                </div>
+                <div class="study-content">
+                    <div id="flashcard" class="flashcard">
+                        <div class="card-front">
+                            <div class="card-content">
+                                <h3 id="cardFrontText">Nhấn để xem câu trả lời</h3>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-content">
+                                <h3 id="cardBackText">Câu trả lời</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="study-actions">
+                        <button id="flipCardBtn" class="btn btn-primary">Lật thẻ</button>
+                        <div class="difficulty-buttons">
+                            <button id="easyBtn" class="btn btn-success">Dễ</button>
+                            <button id="mediumBtn" class="btn btn-warning">Trung bình</button>
+                            <button id="hardBtn" class="btn btn-danger">Khó</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Screen -->
+            <div id="quizScreen" class="screen">
+                <div class="quiz-header">
+                    <button id="backFromQuizBtn" class="btn btn-back">
+                        <span class="icon">←</span>
+                        Quay lại
+                    </button>
+                    <div class="quiz-progress">
+                        <span id="quizProgress">1 / 1</span>
+                        <div class="progress-bar">
+                            <div id="quizProgressBar" class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="quiz-content">
+                    <div class="quiz-question">
+                        <h3 id="quizQuestion">Câu hỏi</h3>
+                    </div>
+                    <div class="quiz-options" id="quizOptions">
+                        <!-- Options will be dynamically added -->
+                    </div>
+                    <div class="quiz-actions">
+                        <button id="nextQuizBtn" class="btn btn-primary" disabled>Tiếp theo</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Results Screen -->
+            <div id="quizResultsScreen" class="screen">
+                <div class="results-content">
+                    <div class="results-icon">🎉</div>
+                    <h2>Kết quả Quiz</h2>
+                    <div class="results-stats">
+                        <div class="result-item">
+                            <span class="result-number" id="correctAnswers">0</span>
+                            <span class="result-label">Đúng</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-number" id="totalQuestions">0</span>
+                            <span class="result-label">Tổng câu</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-number" id="accuracy">0%</span>
+                            <span class="result-label">Độ chính xác</span>
+                        </div>
+                    </div>
+                    <div class="results-actions">
+                        <button id="retakeQuizBtn" class="btn btn-secondary">Làm lại</button>
+                        <button id="backToWelcomeFromResultsBtn" class="btn btn-primary">Về trang chủ</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Toast Notifications -->
+        <div id="toast" class="toast"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
