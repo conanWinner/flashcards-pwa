@@ -1,5 +1,9 @@
 # 📚 Flashcards App - PWA
 
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=for-the-badge&logo=vercel)](https://flashcards-pb1qekmvm-conanwinners-projects.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Available-00C851?style=for-the-badge)](https://flashcards-pb1qekmvm-conanwinners-projects.vercel.app/)
+[![PWA](https://img.shields.io/badge/PWA-Ready-4285F4?style=for-the-badge&logo=pwa)](https://flashcards-pb1qekmvm-conanwinners-projects.vercel.app/)
+
 Ứng dụng học tập thông minh sử dụng thẻ ghi nhớ (flashcards) được xây dựng như một Progressive Web App (PWA).
 
 ## 🎯 Mô tả dự án
@@ -101,8 +105,9 @@ npx serve .
 ```
 
 ### 2. Truy cập ứng dụng
-- Mở trình duyệt và truy cập `https://localhost:8000`
-- Hoặc deploy lên hosting service như Netlify, Vercel, GitHub Pages
+- **Live Demo**: [https://flashcards-pb1qekmvm-conanwinners-projects.vercel.app/](https://flashcards-pb1qekmvm-conanwinners-projects.vercel.app/)
+- **Local**: Mở trình duyệt và truy cập `https://localhost:8000`
+- **Deploy**: Có thể deploy lên hosting service như Netlify, Vercel, GitHub Pages
 
 ### 3. Cài đặt PWA
 - Trên desktop: Click vào icon "Install" trên thanh địa chỉ
@@ -183,6 +188,11 @@ Chỉnh sửa trong `index.html` và `app.js`:
 
 ## 🚀 Triển khai
 
+### 🌐 Live Demo
+**Ứng dụng đã được deploy và có thể truy cập tại:**
+- **Vercel**: [https://flashcards-pb1qekmvm-conanwinners-projects.vercel.app/](https://flashcards-pb1qekmvm-conanwinners-projects.vercel.app/)
+- **GitHub Repository**: [https://github.com/conanWinner/flashcards-pwa](https://github.com/conanWinner/flashcards-pwa)
+
 ### GitHub Pages
 1. Push code lên GitHub repository
 2. Vào Settings > Pages
@@ -194,7 +204,7 @@ Chỉnh sửa trong `index.html` và `app.js`:
 2. Deploy tự động khi push code
 3. Truy cập URL được cung cấp
 
-### Vercel
+### Vercel (Đã triển khai)
 1. Import project từ GitHub
 2. Deploy tự động
 3. Truy cập URL được cung cấp
