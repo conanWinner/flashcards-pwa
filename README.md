@@ -226,15 +226,14 @@ Dự án này được phân phối dưới giấy phép MIT. Xem file `LICENSE`
 
 ## 👨‍💻 Tác giả
 
-**Sinh viên**: [Tên sinh viên]
-**MSSV**: [Mã số sinh viên]
-**Lớp**: [Tên lớp]
-**Môn học**: Progressive Web Apps
+**Sinh viên**: Đoàn Quang Thắng
+**MSSV**: 22IT272
+**Lớp**: 22SE2
 
 ## 📞 Liên hệ
 
-- Email: [email@example.com]
-- GitHub: [github.com/username]
+- Email: thangqd.22it@vku.udn.vn
+- GitHub: https://github.com/conanWinner
 
 ---
 
