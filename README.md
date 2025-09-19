@@ -8,9 +8,16 @@
 
 ## 🎯 Mô tả dự án
 
-Flashcards App là một ứng dụng web tiến bộ (PWA) giúp người dùng học tập hiệu quả thông qua phương pháp thẻ ghi nhớ. Ứng dụng hỗ trợ tạo, quản lý và học tập với các thẻ ghi nhớ, bao gồm chế độ quiz tương tác.
+Flashcards App là một ứng dụng web tiến bộ (PWA) được thiết kế đặc biệt để giúp người Việt học tiếng Anh hiệu quả. Ứng dụng sử dụng phương pháp thẻ ghi nhớ (flashcards) kết hợp với phát âm chuẩn, giúp người dùng cải thiện từ vựng, ngữ pháp và khả năng giao tiếp tiếng Anh một cách tự nhiên.
 
 ## ✨ Tính năng chính
+
+### 🇬🇧 Học tiếng Anh hiệu quả
+- **20+ thẻ mẫu**: Từ vựng cơ bản, hội thoại hàng ngày, ngữ pháp
+- **Phát âm chuẩn**: Text-to-Speech với giọng Anh-Mỹ
+- **Phân loại theo chủ đề**: 13 danh mục từ cơ bản đến nâng cao
+- **Học từ dễ đến khó**: Phân cấp độ khó phù hợp với trình độ
+- **Thực hành đa dạng**: Học từng thẻ + Quiz trắc nghiệm
 
 ### 🃏 Quản lý thẻ ghi nhớ
 - **Tạo thẻ mới**: Thêm câu hỏi và câu trả lời
@@ -135,6 +142,7 @@ npx serve .
 
 ### Phím tắt
 - **Space**: Lật thẻ (trong chế độ học)
+- **S**: Phát âm tiếng Anh (trong chế độ học)
 - **1**: Đánh giá "Dễ"
 - **2**: Đánh giá "Trung bình"
 - **3**: Đánh giá "Khó"

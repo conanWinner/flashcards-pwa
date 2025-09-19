@@ -89,6 +89,10 @@ class FlashcardsApp {
             this.rateDifficulty('hard');
         });
 
+        document.getElementById('speakBtn').addEventListener('click', () => {
+            this.speakCurrentCard();
+        });
+
         document.getElementById('backToWelcomeBtn').addEventListener('click', () => {
             this.showScreen('welcomeScreen');
         });
@@ -289,6 +293,32 @@ class FlashcardsApp {
         document.getElementById('flashcard').classList.remove('flipped');
     }
 
+    // Text-to-Speech functionality
+    speakText(text, language = 'en-US') {
+        if ('speechSynthesis' in window) {
+            // Stop any ongoing speech
+            speechSynthesis.cancel();
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = language;
+            utterance.rate = 0.8; // Slower speech for learning
+            utterance.pitch = 1;
+            utterance.volume = 1;
+            
+            speechSynthesis.speak(utterance);
+        } else {
+            this.showToast('Trình duyệt không hỗ trợ phát âm', 'warning');
+        }
+    }
+
+    speakCurrentCard() {
+        const card = this.studyCards[this.currentCardIndex];
+        if (!card) return;
+
+        // Speak the English text (front of card)
+        this.speakText(card.front, 'en-US');
+    }
+
     flipCard() {
         document.getElementById('flashcard').classList.toggle('flipped');
     }
@@ -433,12 +463,20 @@ class FlashcardsApp {
 
     getCategoryName(category) {
         const categories = {
-            general: 'Chung',
-            language: 'Ngôn ngữ',
-            science: 'Khoa học',
-            history: 'Lịch sử',
-            math: 'Toán học',
-            other: 'Khác'
+            'basic-vocabulary': 'Từ vựng cơ bản',
+            'daily-conversation': 'Hội thoại hàng ngày',
+            'grammar': 'Ngữ pháp',
+            'business-english': 'Tiếng Anh công sở',
+            'travel': 'Du lịch',
+            'food-drink': 'Đồ ăn & Thức uống',
+            'family-relationships': 'Gia đình & Mối quan hệ',
+            'emotions-feelings': 'Cảm xúc & Tình cảm',
+            'time-weather': 'Thời gian & Thời tiết',
+            'shopping': 'Mua sắm',
+            'health': 'Sức khỏe',
+            'education': 'Giáo dục',
+            'technology': 'Công nghệ',
+            'other': 'Khác'
         };
         return categories[category] || category;
     }
@@ -467,55 +505,223 @@ class FlashcardsApp {
     loadSampleData() {
         if (this.cards.length === 0) {
             const sampleCards = [
+                // Từ vựng cơ bản
                 {
                     id: this.generateId(),
                     front: 'Hello',
                     back: 'Xin chào',
-                    category: 'language',
+                    category: 'basic-vocabulary',
                     createdAt: new Date().toISOString(),
                     studiedCount: 0,
                     lastStudied: null,
-                    difficulty: 'medium'
+                    difficulty: 'easy'
                 },
                 {
                     id: this.generateId(),
                     front: 'Goodbye',
                     back: 'Tạm biệt',
-                    category: 'language',
+                    category: 'basic-vocabulary',
                     createdAt: new Date().toISOString(),
                     studiedCount: 0,
                     lastStudied: null,
-                    difficulty: 'medium'
+                    difficulty: 'easy'
                 },
                 {
                     id: this.generateId(),
                     front: 'Thank you',
                     back: 'Cảm ơn',
-                    category: 'language',
-                    createdAt: new Date().toISOString(),
-                    studiedCount: 0,
-                    lastStudied: null,
-                    difficulty: 'medium'
-                },
-                {
-                    id: this.generateId(),
-                    front: 'What is JavaScript?',
-                    back: 'Một ngôn ngữ lập trình phổ biến cho web development',
-                    category: 'science',
-                    createdAt: new Date().toISOString(),
-                    studiedCount: 0,
-                    lastStudied: null,
-                    difficulty: 'medium'
-                },
-                {
-                    id: this.generateId(),
-                    front: '2 + 2 = ?',
-                    back: '4',
-                    category: 'math',
+                    category: 'basic-vocabulary',
                     createdAt: new Date().toISOString(),
                     studiedCount: 0,
                     lastStudied: null,
                     difficulty: 'easy'
+                },
+                {
+                    id: this.generateId(),
+                    front: 'Please',
+                    back: 'Làm ơn / Xin vui lòng',
+                    category: 'basic-vocabulary',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'easy'
+                },
+                {
+                    id: this.generateId(),
+                    front: 'Sorry',
+                    back: 'Xin lỗi',
+                    category: 'basic-vocabulary',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'easy'
+                },
+                // Hội thoại hàng ngày
+                {
+                    id: this.generateId(),
+                    front: 'How are you?',
+                    back: 'Bạn có khỏe không?',
+                    category: 'daily-conversation',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'easy'
+                },
+                {
+                    id: this.generateId(),
+                    front: 'What is your name?',
+                    back: 'Tên bạn là gì?',
+                    category: 'daily-conversation',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'easy'
+                },
+                {
+                    id: this.generateId(),
+                    front: 'Where are you from?',
+                    back: 'Bạn đến từ đâu?',
+                    category: 'daily-conversation',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'medium'
+                },
+                {
+                    id: this.generateId(),
+                    front: 'Nice to meet you',
+                    back: 'Rất vui được gặp bạn',
+                    category: 'daily-conversation',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'easy'
+                },
+                // Ngữ pháp
+                {
+                    id: this.generateId(),
+                    front: 'I am / You are / He is',
+                    back: 'Tôi là / Bạn là / Anh ấy là',
+                    category: 'grammar',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'medium'
+                },
+                {
+                    id: this.generateId(),
+                    front: 'I have / You have / He has',
+                    back: 'Tôi có / Bạn có / Anh ấy có',
+                    category: 'grammar',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'medium'
+                },
+                // Du lịch
+                {
+                    id: this.generateId(),
+                    front: 'Where is the bathroom?',
+                    back: 'Nhà vệ sinh ở đâu?',
+                    category: 'travel',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'medium'
+                },
+                {
+                    id: this.generateId(),
+                    front: 'How much does this cost?',
+                    back: 'Cái này giá bao nhiêu?',
+                    category: 'travel',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'medium'
+                },
+                // Đồ ăn & Thức uống
+                {
+                    id: this.generateId(),
+                    front: 'I would like to order...',
+                    back: 'Tôi muốn gọi...',
+                    category: 'food-drink',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'medium'
+                },
+                {
+                    id: this.generateId(),
+                    front: 'Water',
+                    back: 'Nước',
+                    category: 'food-drink',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'easy'
+                },
+                // Gia đình & Mối quan hệ
+                {
+                    id: this.generateId(),
+                    front: 'Family',
+                    back: 'Gia đình',
+                    category: 'family-relationships',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'easy'
+                },
+                {
+                    id: this.generateId(),
+                    front: 'Mother / Father',
+                    back: 'Mẹ / Bố',
+                    category: 'family-relationships',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'easy'
+                },
+                // Cảm xúc & Tình cảm
+                {
+                    id: this.generateId(),
+                    front: 'Happy',
+                    back: 'Vui vẻ / Hạnh phúc',
+                    category: 'emotions-feelings',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'easy'
+                },
+                {
+                    id: this.generateId(),
+                    front: 'Sad',
+                    back: 'Buồn',
+                    category: 'emotions-feelings',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'easy'
+                },
+                // Thời gian & Thời tiết
+                {
+                    id: this.generateId(),
+                    front: 'What time is it?',
+                    back: 'Mấy giờ rồi?',
+                    category: 'time-weather',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'medium'
+                },
+                {
+                    id: this.generateId(),
+                    front: 'It is sunny today',
+                    back: 'Hôm nay trời nắng',
+                    category: 'time-weather',
+                    createdAt: new Date().toISOString(),
+                    studiedCount: 0,
+                    lastStudied: null,
+                    difficulty: 'medium'
                 }
             ];
 
@@ -576,6 +782,12 @@ class FlashcardsApp {
             case '3':
                 if (document.getElementById('studyScreen').classList.contains('active')) {
                     this.rateDifficulty('hard');
+                }
+                break;
+            case 's':
+            case 'S':
+                if (document.getElementById('studyScreen').classList.contains('active')) {
+                    this.speakCurrentCard();
                 }
                 break;
             case 'Escape':
